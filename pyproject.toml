@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-agent-toolkit"
+version = "0.1.0"
+description = "A ReAct-pattern LLM agent framework with pluggable tools, persistent memory, multi-step planning, and an interactive CLI."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.30",
+    "langchain>=0.2",
+    "fastapi>=0.110",
+    "redis>=5.0",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "mypy>=1.9", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
