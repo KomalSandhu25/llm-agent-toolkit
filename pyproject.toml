@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-agent-toolkit"
+version = "0.1.0"
+description = "A ReAct-pattern LLM agent framework with pluggable tools, persistent memory, multi-step planning, and an interactive CLI."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Komal Sandhu" }]
+dependencies = [
+    "pydantic>=2.5",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.30"]
+langchain = ["langchain>=0.2"]
+api = ["fastapi>=0.110", "uvicorn>=0.29"]
+redis = ["redis>=5.0"]
+dev = ["pytest>=8.0", "mypy>=1.10", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+plugins = ["pydantic.mypy"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
